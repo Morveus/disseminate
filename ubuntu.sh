@@ -15,4 +15,5 @@ brew install starship
 mkdir ~/.ssh
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/BnhfaNr5onYZ8ZfbRz7BTsnC+Zvcjqjj5/QaJJUMzFQE+Urb1TXGKuaAG/IYt/pWIld5MGJt0T53w+AP7McrF9ROp1vwLYMKS058fXfOm8bab1DShfOBDNtnF3n/ojLN7CVXGDXgblxbxR+2svhzztldfXlm5kaj4g/UheZHkvOuLNWpyMgHUDxaL/kQXUK2dOqf5sarpFR1qgLpnLAXnbow76kfqJNm0YCkHsnLdpLoRX5RtD8POpEa+5NM7D9rwYby4dEMhMh2V26zJdBUcbGsMoHUjzQBGhvKft0XpGOBQO/e+X/UUq+//aLmVOhIZK1lqybynK+S0gsU/RYL" >> ~/.ssh/authorized_keys
 
-#
+# Aliases
+alias kubernetes-full-rollout=kubectl get deployments --all-namespaces -o json | jq -c -r '.items[] | "\(.metadata.namespace) \(.metadata.name)"' | while read -r ns deployment; do kubectl rollout restart deployment "$deployment" -n "$ns"; done 
