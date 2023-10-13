@@ -24,3 +24,8 @@ alias kubernetes-full-rollout=kubectl get deployments --all-namespaces -o json |
 # Run within fish
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 fisher install jorgebucaran/spark.fish
+
+# Fish config 
+echo "alias clear='echo -en \"\\x1b[2J\\x1b[1;1H\" ; echo; echo; seq 1 (tput cols) | sort -R | spark | lolcat; echo; echo'" >> ~/.config/fish/config.fish 
+echo "alias rainbow-spark='seq 1 (tput cols) | sort -R | spark | lolcat;'" >> ~/.config/fish/config.fish
+echo "alias rainbow-line='string repeat -n (tput cols) (echo -e \"\\u2588\") | lolcat;'" >> ~/.config/fish/config.fish
