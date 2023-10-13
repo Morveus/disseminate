@@ -4,6 +4,9 @@
 # Install Fish
 brew install fish
 
+# Various packages 
+apt install lolcat -f
+
 # Add fish as default 
 echo "/home/linuxbrew/.linuxbrew/bin/fish" | sudo tee -a /etc/shells
 chsh -s /home/linuxbrew/.linuxbrew/bin/fish
@@ -17,3 +20,7 @@ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/BnhfaNr5onYZ8ZfbRz7BTsnC+Zvcjqjj5/
 
 # Aliases
 alias kubernetes-full-rollout=kubectl get deployments --all-namespaces -o json | jq -c -r '.items[] | "\(.metadata.namespace) \(.metadata.name)"' | while read -r ns deployment; do kubectl rollout restart deployment "$deployment" -n "$ns"; done 
+
+# Run within fish
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+fisher install jorgebucaran/spark.fish
