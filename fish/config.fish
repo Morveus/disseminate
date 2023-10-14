@@ -328,3 +328,11 @@ set --export PATH $BUN_INSTALL/bin $PATH
 
 # brew
 set --export PATH /opt/homebrew/bin $PATH
+
+alias clear='echo -en "\x1b[2J\x1b[1;1H" ; echo; echo; seq 1 (tput cols) | sort -R | spark | 
+lolcat; echo; echo'
+alias rainbow-spark='seq 1 (tput cols) | sort -R | spark | lolcat'
+
+function fish_greeting
+ rainbow-spark
+end
