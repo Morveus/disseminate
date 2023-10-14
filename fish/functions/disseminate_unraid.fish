@@ -12,8 +12,7 @@ function disseminate_unraid
 	cp $keysfile $keysfileboot
    end
 
-   if ! grep -q "$keysfileboot" $gofile; then
-     echo "cp -p $keysfileboot $keysfile" >> /boot/config/go
-   fi
-      
+   if not grep -q "$keysfileboot" $gofile
+      echo "cp -p $keysfileboot $keysfile" >> /boot/config/go
+   end   
 end
