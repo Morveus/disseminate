@@ -1,3 +1,5 @@
 # unRAID
 
-Download all files then run `unRAID.sh`
+- Download all files 
+- Copy `fish.config` from the `fish` folder to `/boot/config/`
+- Run `unRAID.sh`
