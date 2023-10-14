@@ -7,6 +7,7 @@ function disseminate_unraid
 	pip3 install lolcat
    end
 
+   touch $keysfile
    if test -e $keysfile
 	cp $keysfile $keysfileboot
    end
