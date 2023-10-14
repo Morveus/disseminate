@@ -1,0 +1,5 @@
+# Install plug-in : https://raw.githubusercontent.com/ich777/un-get/master/un-get.plg
+
+echo "https://raw.githubusercontent.com/ich777/slackware/master/slackware64-15.0/slackware64/ ich777" >> /boot/config/plugins/un-get/sources.list
+un-get update
+un-get install fish
