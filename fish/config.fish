@@ -332,15 +332,7 @@ set --export PATH /opt/homebrew/bin $PATH
 set --export PATH /home/linuxbrew/.linuxbrew/bin/ $PATH
 
 alias rainbow-spark='seq 1 (tput cols) | sort -R | spark | lolcat'
+alias display-machinename=test -f "$HOME/.config/fish/machinename" && pyfiglet (cat "$HOME/.config/fish/machinename")|mlolcat || pyfiglet $hostname|mlolcat
+alias fish_greeting=rainbow-spark;display_machinename;rainbow-spark
 
-function display_machinename
-  test -f "$HOME/.config/fish/machinename" && pyfiglet (cat "$HOME/.config/fish/machinename")|mlolcat || pyfiglet $hostname|mlolcat
-end
-
-function fish_greeting
- rainbow-spark
- display_machinename
- rainbow-spark
-end
-
-alias clear='command clear; fish_greeting;'
+alias clear='echo -e "\033[2J\033[H";fish_greeting;'
