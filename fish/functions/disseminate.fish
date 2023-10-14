@@ -26,7 +26,7 @@ function disseminate
 
             set commitcount (git rev-list --all --count)
             echo "$commitcount" > version_file
-	    set diss_version (cat version_file)
+	    set diss_version (cat $fullpath/version_file)
             echo "Version is 1.0.$diss_version" | mlolcat
 
 	    echo "Fish commands and Disseminate updated" | mlolcat; echo;
