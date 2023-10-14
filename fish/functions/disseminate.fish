@@ -30,6 +30,9 @@ function disseminate
 
 	    echo "Fish commands and Disseminate updated" | mlolcat; echo;
 
+	case test
+	    echo "Teeeeeeeeeeeeeest" | mlolcat
+
         case help
             echo "Usage:"
             echo "disseminate update : updates my fish shell and this actual script"
