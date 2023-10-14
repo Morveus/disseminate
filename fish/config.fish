@@ -343,4 +343,4 @@ function fish_greeting
  rainbow-spark
 end
 
-alias clear='clear; fish_greeting;'
+alias clear='command clear; fish_greeting;'
