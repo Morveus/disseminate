@@ -13,6 +13,9 @@ https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 git clone https://github.com/Morveus/disseminate $HOME/.config/fish/disseminate
+
+sleep 3
+
 cp $HOME/.config/fish/disseminate/fish/functions/*.fish $HOME/.config/fish/functions
 cp $HOME/.config/fish/disseminate/fish/config.fish $HOME/.config/fish/
 
