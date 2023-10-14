@@ -24,10 +24,13 @@ function disseminate
 	       set output (git pull | tee /dev/fd/2 | mlolcat)
 
 	       if string match -q "*up to date*" "$output"
-	           restart_me "yes"
+	           set restart_me "yes"
 	       end
 	    else	    
 	       git clone https://github.com/Morveus/disseminate "$fish_folder/$repo_name" | mlolcat
+	       sleep 5
+               disseminate update
+	       return
   	    end
 
 	    cd $fullpath
