@@ -335,9 +335,9 @@ alias rainbow-spark 'seq 1 (tput cols) | sort -R | spark | lolcat'
 
 function display-machinename
     if test -f "$HOME/.config/fish/machinename"
-        pyfiglet (cat "$HOME/.config/fish/machinename") | mlolcat
+        pyfiglet (cat "$HOME/.config/fish/machinename") | head -n -1 | mlolcat
     else
-        pyfiglet $hostname | mlolcat
+        pyfiglet $hostname | head -n -1 | mlolcat
     end
 end
 
