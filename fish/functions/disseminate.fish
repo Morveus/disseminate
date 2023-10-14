@@ -1,10 +1,11 @@
 function disseminate
     set major = "1.0"
-    set diss_version (cat version_file)
     set repo_name 'disseminate'
     set fish_folder "$HOME/.config/fish"
     set fullpath "$fish_folder/$repo_name"
     set current_folder (pwd)
+
+    set diss_version (cat $fullpath/version_file)
 
     echo; echo "Disseminate 1.0.$diss_version ~~ https://morve.us/dis" | mlolcat; echo;
     switch $argv[1]
