@@ -1,6 +1,9 @@
 # disseminate
 
-Personal shell and environment conf files and commands, used when building new machines
+Personal scripts allowing me to take over a new machine in a few seconds
+
+<img width="2056" alt="image" src="https://github.com/Morveus/disseminate/assets/2972468/f90b229d-6358-4a68-bba9-f53e81343925">
+
 
 ## Linux and MacOS
 Run 
