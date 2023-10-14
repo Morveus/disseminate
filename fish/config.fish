@@ -326,8 +326,9 @@ alias dtosbackup='cp -Rf /etc/dtos ~/dtos-backup-(date +%Y.%m.%d-%H.%M.%S)'
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
-# brew
+# brew mac
 set --export PATH /opt/homebrew/bin $PATH
+set --export PATH /home/linuxbrew/.linuxbrew/bin/ $PATH
 
 alias clear='echo -en "\x1b[2J\x1b[1;1H" ; echo; echo; seq 1 (tput cols) | sort -R | spark | 
 lolcat; echo; echo'
