@@ -1,5 +1,5 @@
 function morveus
-    echo "Morveus Helper 1.0 ~~ https://morve.us" | mlolcat
+    echo "Morveus Helper 1.0 ~~ https://morve.us/dis" | mlolcat
 
     switch $argv[1]
 	case update
