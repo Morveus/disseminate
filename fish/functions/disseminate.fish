@@ -19,6 +19,10 @@ function disseminate
   	    end
 
 
+	    cp "fish/functions/*.fish "$fish_folder/functions/"
+            cp "fish/config.fish" "$fish_folder/"
+
+
             set commitcount (git rev-list --all --count)
             echo "$commitcount" > version_file
 	    set diss_version (cat version_file)
