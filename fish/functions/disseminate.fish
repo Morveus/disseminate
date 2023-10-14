@@ -29,10 +29,14 @@ function disseminate
 	    set diss_version (cat $fullpath/version_file)
             echo "Version is 1.0.$diss_version" | mlolcat
 
+	    echo "Sourcing configuration file and functions..." | mlolcat
+
+	    source $fish_folder/config.fish
+	    source $fish_folder/functions/*
+
 	    echo "Fish commands and Disseminate updated" | mlolcat; echo;
 
-	case test
-	    echo "Teeeeeeeeeeeeeest" | mlolcat
+	    
 
         case help
             echo "Usage:"
