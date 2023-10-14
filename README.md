@@ -4,13 +4,17 @@ Personal shell and environment conf files and commands, used when building new m
 
 # Linux and MacOS
 Run 
-```curl https://raw.githubusercontent.com/Morveus/disseminate/main/go.sh | bash``` 
+```
+curl https://raw.githubusercontent.com/Morveus/disseminate/main/go.sh | bash
+``` 
 
 then `fish` and `disseminate update`
 
 # unRAID
 Run 
-```curl https://raw.githubusercontent.com/Morveus/disseminate/main/go-unraid.sh | bash```
+```
+curl https://raw.githubusercontent.com/Morveus/disseminate/main/go-unraid.sh | bash
+```
 
 then `fish` and `disseminate update`
 
