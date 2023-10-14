@@ -341,8 +341,10 @@ function display-machinename
     end
 end
 
+function clear
+    command clear
+    fish_greeting
+end
+
 alias fish-greeting 'rainbow-spark;display-machinename;rainbow-spark'
-
-
 alias fish_greeting 'fish-greeting'
-alias clear='echo -e "\033[2J\033[H"; fish-greeting'
