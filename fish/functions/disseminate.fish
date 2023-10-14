@@ -37,7 +37,7 @@ function disseminate
 
 	    echo "Fish commands and Disseminate updated" | mlolcat; echo;
 
-	    cowsay "THANKS" | mlolcat	    
+	    fish_cowsay "THANKS" | mlolcat	    
 
         case help
             echo "Usage:"
