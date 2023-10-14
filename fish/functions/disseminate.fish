@@ -35,6 +35,11 @@ function disseminate
 	    source $fish_folder/config.fish
 	    source $fish_folder/functions/*
 
+	    # Scripts for unraid
+	    if is_unraid
+		disseminate_unraid
+            end
+
 	    echo "Fish commands and Disseminate updated" | mlolcat; echo;
 
 	    fish_cowsay "THANKS" | mlolcat	    
