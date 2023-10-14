@@ -1,4 +1,5 @@
 function disseminate_all
+   # SSH Keys
    set ssh_folder $HOME/.ssh
    set keysfile $HOME/.ssh/authorized_keys
 
@@ -10,6 +11,11 @@ function disseminate_all
 
    if not grep -q "AAAAB3NzaC1yc2EAAAADAQABAAABgQDBp4ye1qpGfC" $keysfile
      echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDBp4ye1qpGfCX4kR6IlHbCcVX5SSrtfjcvaqZVd1lpLys7P04HOF/EQCjdmPdX9YA+f3oUbcHsypLGrdeCSwC85Llj8oHcO+8dxLsyp8nJ4xJ8tW7MsO/LqIi9H8qbyY4B8fk1tqwhcOvHzsoAhH4wezSaTbeg+/uNsGP2NhQfv2Lh/Ex+GkQKbTmFPxOVZAJ3HwOWdzph+dlQSkDcCSddpj5NpPrAKZqSjJAw6qhE8D4PaxFn6EICsdQ8EpewMsANXQPbOrG5ZiuxbQQj8w+tPHZDOgmWpWa4S/GBlcBXjmllcTnnb++Z5TJ1KpJo87D9DtPCccPhsPe2t/dDRbV05Hsw5TW5PEl6TmaAHPBqhq88fFTA3acnXuVQ82Q4aFJFwQVHAhbO89FUOFXRs+K//4mYPShiX7FSXgcP45ucUbugTJ8f1DTzkfRI1gBSF4BqbafoaZTW1MGL40ybz7RudQlSg8IouTL5Y9Wc72fxDx0tlLL4YcC14A1BIl+x/s8= morveus@morveus-home" >> $keysfile
+   end
+
+   # pyfiglet
+   if not type -q pyfiglet
+	pip3 install pyfiglet
    end
 
 
