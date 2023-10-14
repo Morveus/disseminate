@@ -14,7 +14,7 @@ function disseminate
             #remove_folder $fullpath
 	    if test -d $fullpath
 	       cd $fullpath
-               git pull --force | mlolcat
+               git pull | mlolcat
 	    else	    
 	       git clone https://github.com/Morveus/disseminate "$fish_folder/$repo_name" | mlolcat
   	    end
