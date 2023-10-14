@@ -2,7 +2,7 @@ function disseminate
     set major = "1.0"
     set diss_version (cat version_file)
     set repo_name 'disseminate'
-    set fish_folder '~/.config/fish'
+    set fish_folder '$HOME/.config/fish'
     set fullpath "$fish_folder/$repo_name"
     set current_folder (pwd)
 
