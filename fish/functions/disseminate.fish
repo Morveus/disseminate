@@ -39,9 +39,24 @@ function disseminate
 	    source $fish_folder/config.fish
 	    source $fish_folder/functions/*
 
+	    # Scripts for Unix
+            if is_debian; or is_mac
+                disseminate_unix
+            end
+
 	    # Scripts for unraid
 	    if is_unraid
 		disseminate_unraid
+            end
+
+	    # Scripts for Debian
+            if is_debian
+                disseminate_debian
+            end
+
+	    # Scripts for Mac
+            if is_unraid
+                disseminate_mac
             end
 
 	    echo "Fish commands and Disseminate updated" | mlolcat; echo;
