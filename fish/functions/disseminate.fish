@@ -4,6 +4,7 @@ function disseminate
     set fish_folder "$HOME/.config/fish"
     set fullpath "$fish_folder/$repo_name"
     set current_folder (pwd)
+    set restart_me "no"
 
     set diss_version (cat $fullpath/version_file)
 
@@ -19,6 +20,12 @@ function disseminate
 	    if test -d $fullpath
 	       cd $fullpath
                git pull | mlolcat
+
+	       set output (git pull | tee /dev/fd/2 | mlolcat)
+
+	       if string match -q "*up to date*" "$output"
+	           restart_me "yes"
+	       end
 	    else	    
 	       git clone https://github.com/Morveus/disseminate "$fish_folder/$repo_name" | mlolcat
   	    end
@@ -27,7 +34,6 @@ function disseminate
 
 	    cp fish/functions/*.fish "$fish_folder/functions/"
             cp fish/config.fish "$fish_folder/"
-
 
             set commitcount (git rev-list --all --count)
             echo "$commitcount" > $fullpath/version_file
@@ -38,6 +44,13 @@ function disseminate
 
 	    source $fish_folder/config.fish
 	    source $fish_folder/functions/*
+
+            if test "$restart_me" = "yes"
+		echo "Please wait a moment while fish is reloading..." | mlolcat
+	        sleep 5
+	        disseminate update
+                return
+            end
 
 	    # Scripts for Unix
             if is_debian; or is_mac
@@ -61,7 +74,7 @@ function disseminate
 
 	    echo "Fish commands and Disseminate updated" | mlolcat; echo;
 
-	    fish_cowsay "Call 'disseminate update' once more please" | mlolcat
+	    fish_cowsay "We should be good now" | mlolcat
 
         case help
             echo "Usage:"
