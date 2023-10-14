@@ -19,9 +19,10 @@ function disseminate
             #remove_folder $fullpath
 	    if test -d $fullpath
 	       cd $fullpath
-               git pull | mlolcat
 
-	       set output (git pull | tee /dev/fd/2 | mlolcat)
+	       set output (git pull)
+	       
+	       echo $output | mlolcat
 
 	       if string match -q "*up to date*" "$output"
 	           set restart_me "yes"
