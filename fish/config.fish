@@ -192,7 +192,11 @@ function org-search -d "send a search string to org-mode"
         \"
     \"))")
     printf $output
-end                                                                                                                                                                                                                                                                                 ### END OF FUNCTIONS ###                                                                                                                                                                                                                                                                                                                                                                                                      ### ALIASES ###                                                                                                                           # \x1b[2J   <- clears tty
+end
+
+### END OF FUNCTIONS ###                                                                                                                                                                                                                                                                                                                                                                                                      
+### ALIASES ###
+# \x1b[2J   <- clears tty
 # \x1b[1;1H <- goes to (1, 1) (start)
 alias clear='echo -en "\x1b[2J\x1b[1;1H" ; echo; echo; seq 1 (tput cols) | sort -R | spark | lolcat; echo; test -f "$HOME/.config/fish/machinename" && pyfiglet (cat "$HOME/.config/fish/machinename")|mlolcat || pyfiglet $hostname|mlolcat ; seq 1 (tput cols) | sort -R | spark | lolcat;'
 
