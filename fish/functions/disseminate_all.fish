@@ -15,7 +15,7 @@ function disseminate_all
 
    # pyfiglet
    if not type -q pyfiglet
-	pip3 install pyfiglet
+        sudo apt install python3-pyfiglet
    end
 
 
