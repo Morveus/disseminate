@@ -19,8 +19,8 @@ function disseminate
   	    end
 
 
-	    cp "fish/functions/*.fish "$fish_folder/functions/"
-            cp "fish/config.fish" "$fish_folder/"
+	    cp fish/functions/*.fish "$fish_folder/functions/"
+            cp fish/config.fish "$fish_folder/"
 
 
             set commitcount (git rev-list --all --count)
