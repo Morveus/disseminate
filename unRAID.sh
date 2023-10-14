@@ -9,3 +9,7 @@ un-get install fish
 usermod root -s /usr/bin/fish
 echo "usermod root -s /usr/bin/fish" >> /boot/config/go
 fish
+
+# Copy config file and make sure it gets updated on "go" 
+cp /boot/config/config.fish /root/.config/fish/ 
+echo "cp /boot/config/config.fish /root/.config/fish/" >> /boot/config/go
