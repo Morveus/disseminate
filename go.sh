@@ -8,6 +8,8 @@ elif [[ "$(uname)" == "Darwin" ]]; then
     if ! whereis fish > /dev/null; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         brew install fish git wget curl
+	echo "/home/linuxbrew/.linuxbrew/bin/fish" | sudo tee -a /etc/shells
+	chsh -s /home/linuxbrew/.linuxbrew/bin/fish
     fi
 fi
 
