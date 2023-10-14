@@ -24,7 +24,7 @@ function disseminate
 	       
 	       echo $output | mlolcat
 
-	       if string match -q "*updating*" "$output"
+	       if string match -q "*Updating*" "$output"
 	           set restart_me "yes"
 	       end
 	    else	    
