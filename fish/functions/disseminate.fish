@@ -57,6 +57,9 @@ function disseminate
                 return
             end
 
+            # Scripts for all platforms
+            disseminate_all
+
 	    # Scripts for Unix
             if is_debian; or is_mac
                 disseminate_unix
