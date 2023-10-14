@@ -28,6 +28,7 @@ function disseminate
 	       end
 	    else	    
 	       git clone https://github.com/Morveus/disseminate "$fish_folder/$repo_name" | mlolcat
+	       echo "Please wait while fish reloads scripts..." | lolcat
 	       sleep 5
                disseminate update
 	       return
