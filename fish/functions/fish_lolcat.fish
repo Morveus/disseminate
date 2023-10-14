@@ -5,8 +5,9 @@ function fish_lolcat
         for i in (seq (string length $line))
             set color (math (random) % 6 + 1)
             set -l char (string sub -s $i -l 1 -- $line)
-            echo -n -e (set_color $colors[$color])$char(normal)
+            echo -n -e (set_color $colors[$color])$char(set_color normal)
         end
         echo
     end
 end
+
