@@ -1,8 +1,8 @@
 function is_mac
     if test (uname) = "Darwin"
-	return 1
+	return 0
     end
 
-    return 0
+    return 1
 end
 
