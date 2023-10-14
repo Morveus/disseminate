@@ -7,6 +7,10 @@ function disseminate
 
     set diss_version (cat $fullpath/version_file)
 
+    if is_unraid
+      set fullpath '/boot/config/disseminate'
+    end
+
     echo; echo "Disseminate 1.0.$diss_version ~~ https://morve.us/dis" | mlolcat; echo;
     switch $argv[1]
 
