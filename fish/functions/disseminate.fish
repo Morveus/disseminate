@@ -2,7 +2,8 @@ function disseminate
     echo "Disseminate 1.0 ~~ https://morve.us" | mlolcat
     switch $argv[1]
         case update
-            curl -sL https://raw.githubusercontent.com/Morveus/disseminate/main/fish/config.fish
+            rm -fR /tmp/disseminate
+	    git clone https://github.com/Morveus/disseminate /tmp/disseminate | lolcat
             echo "Fish commands and Disseminate updated" | mlolcat
         case help
             echo "Usage:"
