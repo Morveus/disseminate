@@ -74,7 +74,7 @@ function disseminate
 
 	    echo "Fish commands and Disseminate updated" | mlolcat; echo;
 
-	    fish_cowsay "We should be good now" | mlolcat
+	    fish_cowsay "We should be good to go now!" | mlolcat 
 
         case help
             echo "Usage:"
