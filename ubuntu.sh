@@ -30,5 +30,10 @@ echo "alias clear='echo -en \"\\x1b[2J\\x1b[1;1H\" ; echo; echo; seq 1 (tput col
 echo "alias rainbow-spark='seq 1 (tput cols) | sort -R | spark | lolcat'" >> ~/.config/fish/config.fish
 echo "alias rainbow-line='string repeat -n (tput cols) (echo -e \"\\u2588\") | lolcat'" >> ~/.config/fish/config.fish
 
+
+echo "function fish_greeting" >> ~/.config/fish/config.fish
+echo " rainbow-spark" >> ~/.config/fish/config.fish
+echo "end" >> ~/.config/fish/config.fish
+
 # MOTD
 sudo rm /etc/update-motd.d/* 
