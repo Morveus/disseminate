@@ -11,11 +11,14 @@ curl https://raw.githubusercontent.com/Morveus/disseminate/main/go.sh | bash
 then `fish` and `disseminate update`
 
 # unRAID
-Run 
+
+First, install plug-in : `https://raw.githubusercontent.com/ich777/un-get/master/un-get.plg` from the unRAID plugins interface
+
+Then, run: 
 ```
 curl https://raw.githubusercontent.com/Morveus/disseminate/main/go-unraid.sh | bash
 ```
 
-then `fish` and `disseminate update`
+finally, `fish` and `disseminate update`
 
 All credits when due are kept in original config files
