@@ -335,7 +335,7 @@ alias rainbow-spark 'seq 1 (tput cols) | sort -R | spark | lolcat'
 
 function display-machinename
     if test -f "$HOME/.config/fish/machinename"
-        pyfiglet (cat "$HOME/.config/fish/machinename") | head -n -1 | mlolcat
+        pyfiglet (cat "$HOME/.config/fish/machinename") | head -n -2 | mlolcat
     else
         pyfiglet $hostname | head -n -1 | mlolcat
     end
@@ -345,4 +345,4 @@ alias fish-greeting 'rainbow-spark;display-machinename;rainbow-spark'
 
 
 alias fish_greeting 'fish-greeting'
-alias clear='echo -e "\033[2J\033[H";fish_greeting;'
+alias clear='echo -e "\033[2J\033[H"; fish-greeting'
