@@ -12,7 +12,9 @@ function disseminate
       set fullpath '/boot/config/disseminate'
     end
 
-    echo; echo "Disseminate 1.0.$diss_version ~~ https://morve.us/dis" | mlolcat; echo;
+    echo "-------" | mlolcat
+    echo "Disseminate 1.0.$diss_version ~~ https://morve.us/dis" | mlolcat
+    echo "-------" | mlolcat
     switch $argv[1]
 
         case update
@@ -83,6 +85,15 @@ function disseminate
 	    echo "Fish commands and Disseminate updated" | mlolcat; echo;
 
 	    fish_cowsay "We should be good to go now!" | mlolcat 
+
+        case set
+            switch $argv[2]
+                case name
+                    echo $argv[3] > $fish_folder/machinename
+                    echo "Machine name set to" (cat $fish_folder/machinename) | mlolcat
+                case '*'
+                    echo "Invalid connection. Try 'name'."
+            end
 
         case help
             echo "Usage:"
