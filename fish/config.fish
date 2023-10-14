@@ -196,9 +196,6 @@ end
 
 ### END OF FUNCTIONS ###                                                                                                                                                                                                                                                                                                                                                                                                      
 ### ALIASES ###
-# \x1b[2J   <- clears tty
-# \x1b[1;1H <- goes to (1, 1) (start)
-alias clear='echo -en "\x1b[2J\x1b[1;1H" ; echo; echo; seq 1 (tput cols) | sort -R | spark | lolcat; echo; test -f "$HOME/.config/fish/machinename" && pyfiglet (cat "$HOME/.config/fish/machinename")|mlolcat || pyfiglet $hostname|mlolcat ; seq 1 (tput cols) | sort -R | spark | lolcat;'
 
 # root privileges
 alias doas="doas --"
@@ -334,10 +331,15 @@ set --export PATH $BUN_INSTALL/bin $PATH
 set --export PATH /opt/homebrew/bin $PATH
 set --export PATH /home/linuxbrew/.linuxbrew/bin/ $PATH
 
-alias clear='echo -en "\x1b[2J\x1b[1;1H" ; echo; echo; seq 1 (tput cols) | sort -R | spark | 
-lolcat; echo; echo'
 alias rainbow-spark='seq 1 (tput cols) | sort -R | spark | lolcat'
+alias clear='echo -en "\x1b[2J\x1b[1;1H"; fish_greeting;'
+
+function display_machinename
+  test -f "$HOME/.config/fish/machinename" && pyfiglet (cat "$HOME/.config/fish/machinename")|mlolcat || pyfiglet $hostname|mlolcat
+end
 
 function fish_greeting
+ rainbow-spark
+ display_machinename
  rainbow-spark
 end
