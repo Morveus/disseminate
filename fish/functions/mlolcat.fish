@@ -2,7 +2,7 @@ function mlolcat
     read -d \n -z input
 
     if is_unraid
-        echo -n $input | fish_lolcat
+        echo -n $input | lolcat # yeah I know
     else
        if is_debian; or is_mac
            echo -n $input | lolcat
