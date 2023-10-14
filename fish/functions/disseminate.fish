@@ -19,6 +19,7 @@ function disseminate
 	       git clone https://github.com/Morveus/disseminate "$fish_folder/$repo_name" | mlolcat
   	    end
 
+	    cd $fullpath
 
 	    cp fish/functions/*.fish "$fish_folder/functions/"
             cp fish/config.fish "$fish_folder/"
