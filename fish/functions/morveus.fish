@@ -25,7 +25,18 @@ $function morveus
             switch $argv[2]
                 case rollout-everything
                     echo "Rolling out all deployments on the local k8s cluster" | mlolcat
-                    _morveus-kubernetes-full-rollout                  
+                    _morveus-kubernetes-full-rollout
+                
+            case rollout-everything
+                echo "Rolling out all deployments on the local k8s cluster" | mlolcat
+                echo "Are you sure? [y/N]" | mlolcat
+                read -l response
+                switch $response
+                   case Y y
+                      _morveus-kubernetes-full-rollout 
+                   case '*'
+                      echo "Operation cancelled." | mlolcat
+                end
         case help
             echo "Usage:"
             echo "morveus connect [home|vps|nas] : quick connect to the main entrypoints at home"
@@ -34,3 +45,8 @@ $function morveus
             echo "Invalid command. Try 'morveus help' for usage."
     end
 end
+
+complete -c morveus -a "update connect kubernetes help"
+complete -c morveus -n "__fish_seen_subcommand_from connect" -a "home vps nas streamer"
+complete -c morveus -n "__fish_seen_subcommand_from kubernetes" -a "rollout-everything"
+
