@@ -106,3 +106,6 @@ function disseminate
 
     cd $current_folder
 end
+
+complete -c disseminate -a "update set help"
+complete -c disseminate -n "__fish_seen_subcommand_from set" -a "name"
