@@ -1,5 +1,10 @@
 function morveus
-    echo "Morveus Helper 1.0 ~~ https://morve.us/dis" | mlolcat
+    set major = "1.0"
+    set repo_name 'disseminate'
+    set fish_folder "$HOME/.config/fish"
+    set fullpath "$fish_folder/$repo_name"
+    set diss_version (cat $fullpath/version_file)
+    pyfiglet "Morveus v$diss_version" | mlolcat
 
     switch $argv[1]
 	case update
@@ -32,11 +37,28 @@ function morveus
                            _morveus-kubernetes-full-rollout 
                         case '*'
                            echo "Operation cancelled." | mlolcat
+                    end
              end
-        case help
-            echo "Usage:"
-            echo "morveus connect [home|vps|nas] : quick connect to the main entrypoints at home"
-            echo "morveus help : shows this help"
+	case help
+	    echo "Morveus Helper ~~ https://morve.us/dis" | mlolcat
+	    echo "Usage:" | mlolcat
+	    echo "  morveus connect [option]" | mlolcat
+	    echo "      - Quick connect to the main entrypoints at home." | mlolcat
+	    echo "          home: Connects to rack1" | mlolcat
+	    echo "          vps: Connects to morve.us" | mlolcat
+	    echo "          nas: Connects to unRAID" | mlolcat
+	    echo "          streamer: Connects to the Volumio streamer" | mlolcat
+	    echo;
+
+	    echo "  morveus kubernetes rollout-everything" | mlolcat
+	    echo "      - Rollouts all K8S deployments on the local cluster." | mlolcat
+	    echo;
+
+	    echo "  morveus help" | mlolcat
+	    echo "      - Shows this help message." | mlolcat
+	    echo; 
+
+	    echo "Please visit https://morve.us/dis for more information." | mlolcat
         case '*'
             echo "Invalid command. Try 'morveus help' for usage."
     end
