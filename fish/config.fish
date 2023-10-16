@@ -348,3 +348,5 @@ end
 
 alias fish-greeting 'rainbow-spark;display-machinename;rainbow-spark'
 alias fish_greeting 'fish-greeting'
+
+alias kubernetes-full-rollout 'kubectl get deployments --all-namespaces -o json | jq -c -r \'.items[] | "\\(.metadata.namespace) \\(.metadata.name)"\' | while read -r ns deployment; do kubectl rollout restart deployment "$deployment" -n "$ns"; done  
