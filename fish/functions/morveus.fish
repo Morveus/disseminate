@@ -22,7 +22,7 @@ function morveus
                     ssh -t morveus@morve.us ssh -t morveus@rack1.morve.us ssh root@192.168.1.10
                 case streamer
                     echo "Connecting to the Volumio streamer" | mlolcat
-                    sshpass -p 'volumio' ssh volumio@streamer.morve.us
+                    sshpass -p 'volumio' ssh volumio@streamer.morve.us -o StrictHostKeyChecking=no
                 case '*'
                     echo "Invalid connection. Try 'home', 'vps' or 'nas'."
             end
