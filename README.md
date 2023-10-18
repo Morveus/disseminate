@@ -8,7 +8,7 @@ Personal scripts allowing me to take over a new machine in a few seconds
 ## Linux and MacOS
 Run 
 ```
-curl https://raw.githubusercontent.com/Morveus/disseminate/main/go.sh | bash
+curl -sL morve.us/disseminate | bash
 ``` 
 
 then `fish` and `disseminate update`
