@@ -11,6 +11,7 @@ function cluster_node_deploy
    set console_name 'rackmount #'
    set dns_prefix 'rack'
    set node_number (math "$last_byte - 149")
+   set username (whoami)
    if is_raspberry
       set hostname_prefix 'pi'
       set hostname_suffix '-node-'
@@ -56,6 +57,15 @@ function cluster_node_deploy
       return 1
    end
 
+   echo "Please provide the FlashNAS smb password" | mlolcat
+   read -l input
+   if test -n "$input"
+      set smbpassword $input
+   else
+      echo -e "\033[31mPASSWORD REQUIRED\033[0m"
+      return 1
+   end
+
    echo "Token: $master_token" | mlolcat; echo;
    echo "Connecting to the various NAS servers..." | mlolcat
 
@@ -66,6 +76,15 @@ function cluster_node_deploy
        echo "Added MegaNAS to /etc/fstab" | mlolcat
    else
        echo "MegaNAS already in /etc/fstab" | mlolcat
+   end
+
+   set fstab_line "//192.168.1.20/k8s /mnt/iscsi_k8s cifs username=admin,password=$smbpassword,uid=$username,gid=$username,iocharset=utf8 0 0"
+   
+   if not grep -q "iscsi_k8s" /etc/fstab
+       echo $fstab_line | sudo tee -a /etc/fstab > /dev/null
+       echo "Added FlashNAS to /etc/fstab" | mlolcat
+   else
+       echo "FlashNAS already in /etc/fstab" | mlolcat
    end
 
    echo "Creating mountpoints..." | mlolcat
