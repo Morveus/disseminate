@@ -36,4 +36,8 @@ function pi_node_deploy
    disseminate set name "Pi Cluster Node $node_number"
    sudo hostnamectl set-hostname "$fqdn"
    sudo echo "$fqdn" > /etc/hostname
+
+   sudo apt install -y open-iscsi lsscsi sg3-utils multipath-tools scsitools cifs-utils nfs-common
+
+   
 end
