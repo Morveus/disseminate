@@ -2,7 +2,8 @@ function pi_node_deploy
    echo "ADDING A NEW NODE TO THE CLUSTER" | mlolcat
 
    set main_ip (ip route get 1 | awk '{print $(NF-2);exit}')
-   echo $main_ip
+   echo "IP address is: main_ip. Make sure it's correctly set on the UDM before going on." | mlolcat
+
    set last_byte (echo $main_ip | cut -d '.' -f 4)
    set node_number (math "$last_byte - 100")
 
