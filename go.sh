@@ -1,28 +1,24 @@
 #!/bin/bash
 
-if command -v fish >/dev/null 2>&1; then
-    sudo chsh -s /usr/bin/fish
-    if fish -c "functions -q disseminate"; then
-        echo "Already available ! Running disseminate update (next time, please open fish and type 'disseminate update')"
-        fish -c "disseminate update"
-	exit
-    fi
-fi
-
+USERNAME=$(whoami)
 
 if [[ "$(uname)" == "Linux" ]]; then
     sudo apt update && sudo apt install fish wget git python3 python3-pip python3-pyfiglet lolcat sshpass -y
-    sudo chsh -s /usr/bin/fish
+    sudo chsh -s /usr/bin/fish $USERNAME
 elif [[ "$(uname)" == "Darwin" ]]; then
     if ! whereis fish > /dev/null; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         brew install fish git wget curl lolcat sshpass
-	echo "/home/linuxbrew/.linuxbrew/bin/fish" | sudo tee -a /etc/shells
-	chsh -s /home/linuxbrew/.linuxbrew/bin/fish
+        echo "/home/linuxbrew/.linuxbrew/bin/fish" | sudo tee -a /etc/shells
+        chsh -s /home/linuxbrew/.linuxbrew/bin/fish
     fi
 fi
 
-git clone https://github.com/Morveus/disseminate $HOME/.config/fish/disseminate
+git clone --bare https://github.com/Morveus/disseminate $HOME/.config/fish/disseminate
+cd $HOME/.config/fish/disseminate
+git fetch --all
+git config --bool core.bare false
+git reset --hard origin/HEAD
 
 sleep 3
 
