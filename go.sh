@@ -5,11 +5,8 @@ if command -v fish >/dev/null 2>&1; then
     if fish -c "functions -q disseminate"; then
         echo "Already available ! Running disseminate update (next time, please open fish and type 'disseminate update')"
         fish -c "disseminate update"
+	exit
     fi
-
-    fish
-
-    exit
 fi
 
 
@@ -32,4 +29,5 @@ sleep 3
 cp $HOME/.config/fish/disseminate/fish/functions/*.fish $HOME/.config/fish/functions
 cp $HOME/.config/fish/disseminate/fish/config.fish $HOME/.config/fish/
 
-echo; echo "DONE."; echo "NOW type 'fish' then 'disseminate update'"; echo; echo;
+echo; echo "DONE."; echo "NOW type 'disseminate update'"; echo; echo;
+fish
