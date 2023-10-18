@@ -9,9 +9,9 @@ function pi_node_deploy
 
    echo "Computed node number is '$node_number'. Press ENTER if ok, or enter the new number: " | mlolcat
 
-   read -l node_number
-   if test -n "$node_number"
-       set node_name $node_number
+   read -l input
+   if test -n "$input"
+       set node_name $input
    end
 
    set node_name "pi-$node_number"
