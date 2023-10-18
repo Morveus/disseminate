@@ -34,4 +34,6 @@ function pi_node_deploy
    echo "FQDN: $fqdn"
 
    disseminate set name "Pi Cluster Node $node_number"
+   sudo hostnamectl set-hostname "$fqdn"
+   sudo echo "$fqdn" > /etc/hostname
 end
