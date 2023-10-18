@@ -89,7 +89,8 @@ function disseminate
 
 	    echo "Fish commands and Disseminate updated" | mlolcat; echo;
 
-	    fish_cowsay "We should be good to go now!" | mlolcat 
+            set hostname_cowsay = (cat /etc/hostname) 
+	    fish_cowsay "$hostname_cowsay is up to date" | mlolcat 
 	    cd $current_folder
 
         case set
