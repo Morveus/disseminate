@@ -1,10 +1,13 @@
 #!/bin/bash
 
 if command -v fish >/dev/null 2>&1; then
+    chsh -s /usr/bin/fish
     if fish -c "functions -q disseminate"; then
         echo "Already available ! Running disseminate update (next time, please open fish and type 'disseminate update')"
         fish -c "disseminate update"
     fi
+
+    exit
 fi
 
 
