@@ -27,6 +27,8 @@ git pull
 
 sleep 3
 
+mkdir -p $HOME/.config/fish/functions/
+mkdir -p $HOME/.config/fish/
 cp $HOME/.config/fish/disseminate/fish/functions/*.fish $HOME/.config/fish/functions/
 cp $HOME/.config/fish/disseminate/fish/config.fish $HOME/.config/fish/
 
