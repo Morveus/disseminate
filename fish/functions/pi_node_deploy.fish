@@ -11,7 +11,7 @@ function pi_node_deploy
 
    read -l input
    if test -n "$input"
-       set node_name $input
+       set node_number $input
    end
 
    set node_name "pi-$node_number"
@@ -32,4 +32,6 @@ function pi_node_deploy
    echo "Node number: $node_number"
    echo "Node name: $node_name"
    echo "FQDN: $fqdn"
+
+   disseminate set name "Pi Cluster Node $node_number"
 end
