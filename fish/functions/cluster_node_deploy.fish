@@ -52,7 +52,7 @@ function cluster_node_deploy
       set master_token $input
    else
       echo -e "\033[31mTOKEN REQUIRED\033[0m"
-      exit
+      return 1
    end
 
    echo $master_token
