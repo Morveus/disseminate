@@ -4,6 +4,10 @@ USERNAME=$(whoami)
 
 echo "Running as user $USERNAME..."
 
+if [ -f "/etc/motd" ]; then
+    echo -n | sudo tee /etc/motd
+fi
+
 if [[ "$(uname)" == "Linux" ]]; then
     sudo apt update && sudo apt install fish wget git python3 python3-pip python3-pyfiglet lolcat sshpass -y
     sudo chsh -s /usr/bin/fish $USERNAME
