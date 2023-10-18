@@ -1,7 +1,18 @@
 function pi_node_deploy
    echo "ADDING A NEW NODE TO THE CLUSTER" | mlolcat
-   echo "Please enter the node number:" | mlolcat
-   read node_number
+
+   set main_ip (ip route get 1 | awk '{print $(NF-2);exit}')
+   echo $main_ip
+   set last_byte (echo $main_ip | cut -d '.' -f 4)
+   set node_number (math "$last_byte - 100")
+
+   echo "Computed node number is '$node_number'. Press ENTER if ok, or enter the new number: " | mlolcat
+
+   read -l node_number
+   if test -n "$node_number"
+       set node_name $node_number
+   end
+
    set node_name "pi-$node_number"
    set fqdn "pi$node_number.cluster.morve.us"
    
