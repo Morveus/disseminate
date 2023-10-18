@@ -97,9 +97,20 @@ function disseminate
                     echo "Invalid connection. Try 'name'."
             end
 
+	case cluster
+            switch $argv[2]
+                case "add worker"
+                    cluster_node_deploy
+                case "add master"
+                    echo "Not implemented."
+                case '*'
+                    echo "Invalid connection. Try 'add worker' or 'add master'."
+            end
+
         case help
             echo "Usage:"
-            echo "disseminate update : updates my fish shell and this actual script"
+            echo "disseminate update: updates my fish shell and this actual script"
+            echo "disseminate cluster [add worker|add master]: adds this machine to the house K8S cluster"
             echo "disseminate help : shows this help"
 
         case '*'
