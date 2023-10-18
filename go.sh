@@ -1,9 +1,7 @@
 #!/bin/bash
 
 if [[ "$(uname)" == "Linux" ]]; then
-    if ! whereis fish > /dev/null; then
-        sudo apt update && sudo apt install fish wget git -y
-    fi
+    sudo apt update && sudo apt install fish wget git -y
 elif [[ "$(uname)" == "Darwin" ]]; then
     if ! whereis fish > /dev/null; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
