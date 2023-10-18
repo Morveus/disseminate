@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ "$(uname)" == "Linux" ]]; then
-    sudo apt update && sudo apt install fish wget git -y
+    sudo apt update && sudo apt install fish wget git python3 python3-pip python3-pyfiglet lolcat -y
 elif [[ "$(uname)" == "Darwin" ]]; then
     if ! whereis fish > /dev/null; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
