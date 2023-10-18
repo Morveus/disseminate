@@ -99,12 +99,17 @@ function disseminate
 
 	case cluster
             switch $argv[2]
-                case "add worker"
-                    cluster_node_deploy
-                case "add master"
-                    echo "Not implemented."
-                case '*'
-                    echo "Invalid connection. Try 'add worker' or 'add master'."
+		case "add"
+		    switch $argv[3]
+	                case "worker"
+	                    cluster_node_deploy
+	                case "master"
+	                    echo "Not implemented."
+	                case '*'
+	                    echo "Invalid connection. Try 'add worker' or 'add master'."
+                    end
+		case '*'
+	           echo "Invalid connection. Try 'add'."
             end
 
         case help
