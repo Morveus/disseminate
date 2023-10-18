@@ -57,7 +57,6 @@ function cluster_node_deploy
       else
           echo "RAMdisk logs are already in /etc/fstab" | mlolcat
       end
-
    end
 
    echo "ADDING A NEW NODE TO THE CLUSTER" | mlolcat
