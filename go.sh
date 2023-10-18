@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if command -v fish >/dev/null 2>&1; then
-    chsh -s /usr/bin/fish
+    sudo chsh -s /usr/bin/fish
     if fish -c "functions -q disseminate"; then
         echo "Already available ! Running disseminate update (next time, please open fish and type 'disseminate update')"
         fish -c "disseminate update"
@@ -13,7 +13,7 @@ fi
 
 if [[ "$(uname)" == "Linux" ]]; then
     sudo apt update && sudo apt install fish wget git python3 python3-pip python3-pyfiglet lolcat sshpass -y
-    chsh -s /usr/bin/fish
+    sudo chsh -s /usr/bin/fish
 elif [[ "$(uname)" == "Darwin" ]]; then
     if ! whereis fish > /dev/null; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
