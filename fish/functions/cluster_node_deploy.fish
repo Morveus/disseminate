@@ -1,5 +1,6 @@
 function cluster_node_deploy
-   echo '' > /etc/motd
+   echo "" | sudo tee /etc/motd > /dev/null
+
    set main_ip (ip route get 1 | awk '{print $(NF-2);exit}')
    set last_byte (echo $main_ip | cut -d '.' -f 4)
 
@@ -39,7 +40,7 @@ function cluster_node_deploy
    disseminate set name "$console_name"
 
    sudo hostnamectl set-hostname "$full_dns"
-   echo "$full_dns" | sudo tee /etc/hostname
+   echo "$full_dns" | sudo tee /etc/hostname > /dev/null
    sudo sed -i 's/raspberrypi/full_dns/g' /etc/hosts
 
    sudo apt install -y open-iscsi lsscsi sg3-utils multipath-tools scsitools cifs-utils nfs-common
