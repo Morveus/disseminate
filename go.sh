@@ -20,11 +20,9 @@ elif [[ "$(uname)" == "Darwin" ]]; then
     fi
 fi
 
-git clone --bare https://github.com/Morveus/disseminate $HOME/.config/fish/disseminate
+git clone https://github.com/Morveus/disseminate $HOME/.config/fish/disseminate
 cd $HOME/.config/fish/disseminate
-git fetch --all
-git config --bool core.bare false
-git reset --hard origin/HEAD
+git pull
 
 sleep 3
 
