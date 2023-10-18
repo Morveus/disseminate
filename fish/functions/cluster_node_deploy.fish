@@ -56,5 +56,24 @@ function cluster_node_deploy
       return 1
    end
 
-   echo $master_token
+   echo "Token: $master_token" | mlolcat; echo;
+   echo "Connecting to the various NAS servers..." | mlolcat
+
+   set fstab_line "192.168.1.10:/mnt/user/MegaNAS /mnt/user/MegaNAS nfs rw,soft,timeo=100 0 0"
+   
+   if not grep -q "MegaNAS" /etc/fstab
+       echo $fstab_line | sudo tee -a /etc/fstab > /dev/null
+       echo "Added MegaNAS to /etc/fstab" | mlolcat
+   else
+       echo "MegaNAS already in /etc/fstab" | mlolcat
+   end
+
+   echo "Creating mountpoints..." | mlolcat
+   sudo mkdir -p /mnt/user/MegaNAS
+   sudo mkdir -p /mnt/iscsi_k8s
+
+   echo "systemctl daemon-reload..." | mlolcat
+   sudo systemctl daemon-reload
+   echo "Mounting..." | mlolcat
+   sudo mount -a
 end
