@@ -6,7 +6,11 @@ function disseminate
     set current_folder (pwd)
     set restart_me "no"
 
-    set diss_version (cat $fullpath/version_file)
+    set diss_version 1
+    if test -f $fullpath/version_file
+       set diss_version (cat $fullpath/version_file)
+    end
+
 
     if is_unraid
       set fullpath '/boot/config/disseminate'
