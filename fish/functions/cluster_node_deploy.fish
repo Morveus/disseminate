@@ -1,5 +1,5 @@
 function cluster_node_deploy
-   > /etc/motd
+   echo '' > /etc/motd
    set main_ip (ip route get 1 | awk '{print $(NF-2);exit}')
    set last_byte (echo $main_ip | cut -d '.' -f 4)
 
