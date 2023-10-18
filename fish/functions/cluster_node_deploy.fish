@@ -30,6 +30,25 @@ function cluster_node_deploy
       set dns_prefix 'pi'
       set console_name 'Pi Cluster Node'
       set node_number (math "$last_byte - 100")
+
+      echo "Checking if cgroup is enabled..." | mlolcat
+      set cgroup_status (cat /proc/cgroups | grep memory | awk '{print $4}')
+      
+      if test $cgroup_status -eq 0
+          echo "Cgroup v2 is not enabled. Enabling now..." | mlolcat
+      
+          # Add kernel boot parameter to enable cgroup v2
+          if not grep -q "cgroup_enable=memory" /boot/cmdline.txt
+              sudo cp /boot/cmdline.txt /boot/cmdline_backup.txt
+              echo (cat /boot/cmdline.txt)" cgroup_enable=memory cgroup_memory=1" | sudo tee /boot/cmdline.txt > /dev/null
+          end
+      
+          echo "Cgroup v2 has been enabled. Rebooting now..." | mlolcat
+          sudo reboot
+      else
+          echo "Cgroup v2 is already enabled." | mlolcat
+      end
+
    end
 
    echo "ADDING A NEW NODE TO THE CLUSTER" | mlolcat
