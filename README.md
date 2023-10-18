@@ -16,7 +16,7 @@ then `fish` and `disseminate update`
 ## Android
 Run in Termux-fish (https://github.com/morveus/termux-fish)
 ```
-curl https://raw.githubusercontent.com/Morveus/disseminate/main/go-android.sh | bash
+curl -sL morve.us/disseminate-termux | bash
 ``` 
 
 then `disseminate update`
@@ -29,7 +29,7 @@ First, install plug-in : `https://raw.githubusercontent.com/ich777/un-get/master
 
 Then, run: 
 ```
-curl https://raw.githubusercontent.com/Morveus/disseminate/main/go-unraid.sh | bash
+curl -sL morve.us/disseminate-unraid | bash
 ```
 
 finally, `fish` and `disseminate update`
