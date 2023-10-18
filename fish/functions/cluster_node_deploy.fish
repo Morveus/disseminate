@@ -89,7 +89,7 @@ function cluster_node_deploy
 
    echo "Adding node to the cluster..." | mlolcat
    
-   if test -f "/mnt/user/MegaNAS/Cluster/variables/token"
+   if test -f $token_location
        echo "FOUND THE TOKEN in $token_location" | mlolcat
        echo "DO NOT FORGET TO REMOVE THIS FILE ONCE YOU'RE DONE" | mlolcat
        set master_token (cat $token_location)
