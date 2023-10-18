@@ -49,6 +49,15 @@ function cluster_node_deploy
           echo "Cgroup v2 is already enabled." | mlolcat
       end
 
+      set fstab_line "tmpfs /var/log tmpfs nodev,nosuid,noexec,nodiratime,size=512M 0 0"
+
+      if not grep -q "/var/log tmpfs" /etc/fstab
+          echo $fstab_line | sudo tee -a /etc/fstab > /dev/null
+          echo "Added tmpfs for logs to /etc/fstab" | mlolcat
+      else
+          echo "RAMdisk logs are already in /etc/fstab" | mlolcat
+      end
+
    end
 
    echo "ADDING A NEW NODE TO THE CLUSTER" | mlolcat
