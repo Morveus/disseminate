@@ -38,8 +38,8 @@ function cluster_node_deploy
 
    disseminate set name "$console_name"
 
-   sudo hostnamectl set-hostname "$local_name"
-   sudo echo "$local_name" > /etc/hostname
+   sudo hostnamectl set-hostname "$full_dns"
+   sudo echo "$full_dns" > /etc/hostname
 
    sudo apt install -y open-iscsi lsscsi sg3-utils multipath-tools scsitools cifs-utils nfs-common
 
