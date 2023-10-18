@@ -1,6 +1,7 @@
 #!/bin/bash
 
 USERNAME=$(whoami)
+BASESHELL=$(basename $SHELL)
 
 echo "Running as user $USERNAME..."
 
@@ -33,6 +34,6 @@ cd $HOME
 
 echo; echo "DONE."; echo "NOW type 'disseminate update'"; echo; echo;
 
-if [ "$(ps -p $$ -ocomm=)" != "fish" ]; then
+if [ "$BASESHELL" != "fish" ]; then
     fish
 fi
