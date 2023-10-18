@@ -32,4 +32,7 @@ cp $HOME/.config/fish/disseminate/fish/config.fish $HOME/.config/fish/
 cd $HOME
 
 echo; echo "DONE."; echo "NOW type 'disseminate update'"; echo; echo;
-fish
+
+if [ "$(ps -p $$ -ocomm=)" != "fish" ]; then
+    fish
+fi
