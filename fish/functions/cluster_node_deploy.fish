@@ -39,7 +39,8 @@ function cluster_node_deploy
    disseminate set name "$console_name"
 
    sudo hostnamectl set-hostname "$full_dns"
-   sudo echo "$full_dns" > /etc/hostname
+   echo '$full_dns' | sudo tee /etc/hostname
+   sudo sed -i 's/raspberrypi/full_dns/g' /etc/hosts
 
    sudo apt install -y open-iscsi lsscsi sg3-utils multipath-tools scsitools cifs-utils nfs-common
 
