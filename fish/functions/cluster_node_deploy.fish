@@ -1,4 +1,4 @@
-function pi_node_deploy
+function cluster_node_deploy
    echo "ADDING A NEW NODE TO THE CLUSTER" | mlolcat
 
    set main_ip (ip route get 1 | awk '{print $(NF-2);exit}')
