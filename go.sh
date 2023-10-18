@@ -2,7 +2,7 @@
 
 if [[ "$(uname)" == "Linux" ]]; then
     if ! whereis fish > /dev/null; then
-        sudo apt update && sudo apt install fish wget curl -y
+        sudo apt update && sudo apt install fish wget git -y
     fi
 elif [[ "$(uname)" == "Darwin" ]]; then
     if ! whereis fish > /dev/null; then
