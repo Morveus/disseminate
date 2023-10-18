@@ -3,6 +3,9 @@ function disseminate_all
    set ssh_folder $HOME/.ssh
    set keysfile $HOME/.ssh/authorized_keys
 
+   mkdir "$ssh_folder" -p
+   touch "$keysfile"
+
    if not test -d $ssh_folder
       mkdir -p $ssh_folder
    end
