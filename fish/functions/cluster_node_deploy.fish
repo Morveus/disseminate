@@ -1,11 +1,23 @@
 function cluster_node_deploy
-   echo "ADDING A NEW NODE TO THE CLUSTER" | mlolcat
-
    set main_ip (ip route get 1 | awk '{print $(NF-2);exit}')
-   echo "IP address is: main_ip. Make sure it's correctly set on the UDM before going on." | mlolcat
-
    set last_byte (echo $main_ip | cut -d '.' -f 4)
-   set node_number (math "$last_byte - 100")
+
+   echo "IP address is: $main_ip. Make sure it's correctly set on the UDM before going on." | mlolcat
+
+   set hostname_prefix 'rackmount'
+   set hostname_suffix ''
+   set console_name 'rackmount #'
+   set dns_prefix 'rack'
+   set node_number (math "$last_byte - 149")
+   if is_raspberry
+      set hostname_prefix 'pi'
+      set hostname_suffix '-node-'
+      set dns_prefix 'pi'
+      set console_name 'Pi Cluster Node'
+      set node_number (math "$last_byte - 100")
+   end
+
+   echo "ADDING A NEW NODE TO THE CLUSTER" | mlolcat
 
    echo "Computed node number is '$node_number'. Press ENTER if ok, or enter the new number: " | mlolcat
 
@@ -14,29 +26,19 @@ function cluster_node_deploy
        set node_number $input
    end
 
-   set node_name "pi-$node_number"
-   set fqdn "pi$node_number.cluster.morve.us"
+   set full_dns "$dns_prefix$node_number"
+   set local_name "$hostname_prefix$hostname_suffix$node_number"
+   set console_name "$console_name $node_number"
    
-   echo "What will be the node name? (default: $node_name)" | mlolcat
-   read -l input
-   if test -n "$input"
-       set node_name $input
-   end
-   
-   echo "And its DNS name? (default: $fqdn)" | mlolcat
-   read -l input
-   if test -n "$input"
-       set fqdn $input
-   end
-   
-   echo "Node number: $node_number"
-   echo "Node name: $node_name"
-   echo "FQDN: $fqdn"
+   echo "Machine: $node_number" | mlolcat
+   echo "Local hostname: $local_name" | mlolcat
+   echo "DNS Name: $full_dns" | mlolcat
+   echo "Console name: $console_name" | mlolcat
 
-   set new_hostname "pi-node-$node_number"
-   disseminate set name "Pi Cluster Node $node_number"
-   sudo hostnamectl set-hostname "$new_hostname"
-   sudo echo "$new_hostname" > /etc/hostname
+   disseminate set name "$console_name"
+
+   sudo hostnamectl set-hostname "$local_name"
+   sudo echo "$local_name" > /etc/hostname
 
    sudo apt install -y open-iscsi lsscsi sg3-utils multipath-tools scsitools cifs-utils nfs-common
 
