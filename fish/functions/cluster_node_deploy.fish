@@ -127,4 +127,5 @@ function cluster_node_deploy
    echo "Token: $master_token" | mlolcat; echo;
    
    echo "Running: curl -sfL https://get.k3s.io | K3S_URL=https://$master_server:6443 K3S_TOKEN=\"$master_token\" sh -"
+   curl -sfL https://get.k3s.io | K3S_URL=https://$master_server:6443 K3S_TOKEN="$master_token" sh -
 end
