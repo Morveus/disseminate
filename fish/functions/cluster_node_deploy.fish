@@ -1,14 +1,15 @@
 function cluster_node_deploy
+   set master_server 'rack1.cluster.morve.us'
+
    echo "" | sudo tee /etc/motd > /dev/null
 
    if type -q k3s
-      echo "k3s is installed." | mlolcat
-   else
-      echo "k3s is not installed."
-      echo -e "\033[31mk3s is not installed\033[0m"
+      echo -e "\033[31mk3s is already installed!\033[0m"
       echo -e "\033[31mPlease run /usr/local/bin/k3s-agent-uninstall.sh to uninstall it from an agent\033[0m"
       echo -e "\033[31mor /usr/local/bin/k3s-uninstall.sh to uninstall it from a master.\033[0m"
       return 1
+   else
+      echo "k3s is not installed. We can proceed." | mlolcat
    end
 
    set main_ip (ip route get 1 | awk '{print $(NF-2);exit}')
@@ -98,6 +99,6 @@ function cluster_node_deploy
 
    echo "Token: $master_token" | mlolcat; echo;
 
-   
+   echo "Running: curl -sfL https://get.k3s.io | K3S_URL=https://$master_server:6443 K3S_TOKEN=\"master_token\" sh -"
 end
 
