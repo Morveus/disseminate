@@ -13,7 +13,7 @@ function cluster_node_install_zerotier
    else
        echo "Connecting to the cluster's ZT network..." | mlolcat
        set zt_command "sudo zerotier-cli join $zerotier_network"
-       echoo $zt_command | mlolcat
+       echo $zt_command | mlolcat
        eval $zt_command
        echo "Done. Don't forget to update the ZT network through the dashboard"
    end
