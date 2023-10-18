@@ -29,5 +29,7 @@ sleep 3
 cp $HOME/.config/fish/disseminate/fish/functions/*.fish $HOME/.config/fish/functions/
 cp $HOME/.config/fish/disseminate/fish/config.fish $HOME/.config/fish/
 
+cd $HOME
+
 echo; echo "DONE."; echo "NOW type 'disseminate update'"; echo; echo;
 fish
