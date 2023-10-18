@@ -1,5 +1,6 @@
 function cluster_node_deploy
    set master_server 'rack1.cluster.morve.us'
+   set token_location '/mnt/user/MegaNAS/Cluster/variables/node-token'
 
    echo "" | sudo tee /etc/motd > /dev/null
 
@@ -87,18 +88,24 @@ function cluster_node_deploy
    sudo mount -a
 
    echo "Adding node to the cluster..." | mlolcat
-   echo "Please provide the K8S master token" | mlolcat
-   echo "(sudo cat /var/lib/rancher/k3s/server/node-token on the server)"
-   read -l input
-   if test -n "$input"
-      set master_token $input
+   
+   if test -f "/mnt/user/MegaNAS/Cluster/variables/token"; then
+       echo "FOUND THE TOKEN in $token_location" | mlolcat
+       echo "DO NOT FORGET TO REMOVE THIS FILE ONCE YOU'RE DONE" | mlolcat
+       set master_token (cat $token_location)
    else
-      echo -e "\033[31mTOKEN REQUIRED\033[0m"
-      return 1
-   end
-
+       echo "Please provide the K8S master token" | mlolcat
+       echo "(sudo cat /var/lib/rancher/k3s/server/node-token on the server)"
+       read -l input
+       if test -n "$input"
+           set master_token $input
+       else
+           echo -e "\033[31mTOKEN REQUIRED\033[0m"
+           return 1
+       end
+   fi
+   
    echo "Token: $master_token" | mlolcat; echo;
-
-   echo "Running: curl -sfL https://get.k3s.io | K3S_URL=https://$master_server:6443 K3S_TOKEN=\"master_token\" sh -"
+   
+   echo "Running: curl -sfL https://get.k3s.io | K3S_URL=https://$master_server:6443 K3S_TOKEN=\"$master_token\" sh -"
 end
-
