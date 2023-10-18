@@ -43,7 +43,8 @@ function cluster_node_deploy
    sudo apt install -y open-iscsi lsscsi sg3-utils multipath-tools scsitools cifs-utils nfs-common
 
    echo "Adding node to the cluster..." | mlolcat
-   echo "Please provide the K8S master token:" | mlolcat
+   echo "Please provide the K8S master token" | mlolcat
+   echo "(sudo cat /var/lib/rancher/k3s/server/node-token on the server)"
    read -l input
    if test -n "$input"
       set master_token $input
