@@ -1,5 +1,13 @@
 #!/bin/bash
 
+if command -v fish >/dev/null 2>&1; then
+    if fish -c "functions -q disseminate"; then
+        echo "Already available ! Running disseminate update (next time, please open fish and type 'disseminate update')"
+        fish -c "disseminate update"
+    fi
+fi
+
+
 if [[ "$(uname)" == "Linux" ]]; then
     sudo apt update && sudo apt install fish wget git python3 python3-pip python3-pyfiglet lolcat sshpass -y
     chsh -s /usr/bin/fish
