@@ -114,6 +114,8 @@ function cluster_node_deploy
    echo "Mounting..." | mlolcat
    sudo mount -a
 
+   cluster_node_install_zerotier
+
    echo "Adding node to the cluster..." | mlolcat
    
    if test -f $token_location
