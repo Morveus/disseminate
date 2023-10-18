@@ -39,5 +39,15 @@ function pi_node_deploy
 
    sudo apt install -y open-iscsi lsscsi sg3-utils multipath-tools scsitools cifs-utils nfs-common
 
-   
+   echo "Adding node to the cluster..." | mlolcat
+   echo "Please provide the K8S master token:" | mlolcat
+   read -l input
+   if test -n "$input"
+      set master_token $input
+   else
+      echo -e "\033[31mTOKEN REQUIRED\033[0m"
+      exit
+   end
+
+   echo $master_token
 end
