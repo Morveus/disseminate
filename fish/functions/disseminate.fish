@@ -29,6 +29,7 @@ function disseminate
 	       if string match -q "*Updating*" "$output"
 	           set restart_me "yes"
 	       end
+	       cd $current_folder
 	    else	    
 	       git clone https://github.com/Morveus/disseminate "$fish_folder/$repo_name" | mlolcat
 	       echo "Please wait while fish reloads our scripts... " | lolcat
@@ -85,6 +86,7 @@ function disseminate
 	    echo "Fish commands and Disseminate updated" | mlolcat; echo;
 
 	    fish_cowsay "We should be good to go now!" | mlolcat 
+	    cd $current_folder
 
         case set
             switch $argv[2]
