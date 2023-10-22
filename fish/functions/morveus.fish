@@ -69,6 +69,5 @@ function morveus
 end
 
 complete -c morveus -a "update connect kubernetes help"
-complete -c morveus -n "__fish_seen_subcommand_from connect" -a "home vps nas streamer"
+complete -c morveus -n "__fish_seen_subcommand_from connect" -a "home vps nas streamer mereau-backup"
 complete -c morveus -n "__fish_seen_subcommand_from kubernetes" -a "rollout-everything"
-
