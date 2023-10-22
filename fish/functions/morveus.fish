@@ -23,6 +23,9 @@ function morveus
                 case streamer
                     echo "Connecting to the Volumio streamer" | mlolcat
                     sshpass -p 'volumio' ssh volumio@streamer.morve.us -o StrictHostKeyChecking=no
+                case mereau-backup
+		    echo "Connecting to Mereau Offsite Backup" | mlolcat
+		    ssh root@mereau.backup.morveus.com
                 case '*'
                     echo "Invalid connection. Try 'home', 'vps' or 'nas'."
             end
@@ -47,6 +50,7 @@ function morveus
 	    echo "          home: Connects to rack1" | mlolcat
 	    echo "          vps: Connects to morve.us" | mlolcat
 	    echo "          nas: Connects to unRAID" | mlolcat
+	    echo "          mereau-backup: Connects to Mereau Offsite Backup (Internal Network)" | mlolcat
 	    echo "          streamer: Connects to the Volumio streamer" | mlolcat
 	    echo;
 
