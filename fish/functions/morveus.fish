@@ -29,6 +29,7 @@ function morveus
                 case '*'
                     echo "Invalid connection. Try 'home', 'vps' or 'nas'."
             end
+
         case kubernetes
             switch $argv[2]
                 case rollout-everything
@@ -42,6 +43,17 @@ function morveus
                            echo "Operation cancelled." | mlolcat
                     end
              end
+
+        case 'photos' 'photo'
+            switch $argv[2]
+                case session
+                   echo "Setting photo session to '$argv[3]'" | mlolcat
+                   set sessionname (string escape --style=url "$argv[3]")
+                   set token (cat $HOME/PHOTOS_SEMAPHORE_TOKEN)
+                   curl "https://semaphore.photos.morve.us/?token=$token&semaphore_session_name=$sessionname"
+                   echo "Session is now '$argv[3]'." | mlolcat
+             end
+
 	case help
 	    echo "Morveus Helper ~~ https://morve.us/dis" | mlolcat
 	    echo "Usage:" | mlolcat
@@ -57,6 +69,10 @@ function morveus
 	    echo "  morveus kubernetes rollout-everything" | mlolcat
 	    echo "      - Rollouts all K8S deployments on the local cluster." | mlolcat
 	    echo;
+
+            echo "  morveus photos session [name]" | mlolcat
+            echo "      - Sets the current photo session to 'name' ; can be emptied to finish the session" | mlolcat
+            echo;
 
 	    echo "  morveus help" | mlolcat
 	    echo "      - Shows this help message." | mlolcat
