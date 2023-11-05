@@ -50,8 +50,10 @@ function morveus
                    echo "Setting photo session to '$argv[3]'" | mlolcat
                    set sessionname (string escape --style=url "$argv[3]")
                    set token (cat $HOME/PHOTOS_SEMAPHORE_TOKEN)
+                   
                    curl "https://semaphore.photos.morve.us/?token=$token&semaphore_session_name=$sessionname"
-                   echo "Session is now '$argv[3]'." | mlolcat
+                   
+		   echo; echo "Session is now '$argv[3]'." | mlolcat
              end
 
 	case help
