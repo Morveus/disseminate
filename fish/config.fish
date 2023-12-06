@@ -347,7 +347,7 @@ function clear
 end
 
 function count_files
-    set count $(ls | wc -l)
+    set count (ls | wc -l)
     pyfiglet $count | mlolcat
 end
 
