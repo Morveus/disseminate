@@ -346,5 +346,10 @@ function clear
     fish_greeting
 end
 
+function count_files
+    set count $(ls | wc -l
+    pyfiglet $count | mlolcat
+end
+
 alias fish-greeting 'rainbow-spark;display-machinename;rainbow-spark'
 alias fish_greeting 'fish-greeting'
