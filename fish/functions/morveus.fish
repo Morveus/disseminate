@@ -20,6 +20,9 @@ function morveus
                 case nas
                     echo "Connecting to unRAID" | mlolcat
                     ssh -t morveus@morve.us ssh -t morveus@rack1.morve.us ssh root@192.168.1.10
+                case ai
+                    echo "Connecting to the AI rack machine" | mlolcat
+                    ssh -t morveus@morve.us ssh -t morveus@rack2.morve.us 
                 case streamer
                     echo "Connecting to the Volumio streamer" | mlolcat
                     sshpass -p 'volumio' ssh volumio@streamer.morve.us -o StrictHostKeyChecking=no
@@ -62,6 +65,7 @@ function morveus
 	    echo "  morveus connect [option]" | mlolcat
 	    echo "      - Quick connect to the main entrypoints at home." | mlolcat
 	    echo "          home: Connects to rack1" | mlolcat
+	    echo "          ai: Connects to AI machine" | mlolcat
 	    echo "          vps: Connects to morve.us" | mlolcat
 	    echo "          nas: Connects to unRAID" | mlolcat
 	    echo "          mereau-backup: Connects to Mereau Offsite Backup (Internal Network)" | mlolcat
@@ -87,5 +91,5 @@ function morveus
 end
 
 complete -c morveus -a "update connect kubernetes help"
-complete -c morveus -n "__fish_seen_subcommand_from connect" -a "home vps nas streamer mereau-backup"
+complete -c morveus -n "__fish_seen_subcommand_from connect" -a "home ai vps nas streamer mereau-backup"
 complete -c morveus -n "__fish_seen_subcommand_from kubernetes" -a "rollout-everything"
