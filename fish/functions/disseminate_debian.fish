@@ -8,7 +8,7 @@ function disseminate_debian
    end
 
    if not type -q dusage
-        cargo install dusage -y
+        cargo install dusage 
    end   
 
 end
