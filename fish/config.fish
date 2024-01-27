@@ -326,6 +326,7 @@ alias dtosbackup='cp -Rf /etc/dtos ~/dtos-backup-(date +%Y.%m.%d-%H.%M.%S)'
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+set --export PATH $HOME/.cargo/bin $PATH
 
 # brew mac
 set --export PATH /opt/homebrew/bin $PATH
