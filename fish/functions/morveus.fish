@@ -19,7 +19,7 @@ function morveus
                     ssh morveus@morve.us
                 case vps-ionos
                     echo "Connecting to vps-ionos.morve.us" | mlolcat
-                    ssh morveus@vps-ionosmorve.us
+                    ssh morveus@vps-ionos.morve.us
                 case nas
                     echo "Connecting to unRAID" | mlolcat
                     ssh -t morveus@morve.us ssh -t morveus@rack1.morve.us ssh root@192.168.1.10
