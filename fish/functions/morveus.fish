@@ -17,6 +17,9 @@ function morveus
                 case vps
                     echo "Connecting to morve.us" | mlolcat
                     ssh morveus@morve.us
+                case vps-ionos
+                    echo "Connecting to vps-ionos.morve.us" | mlolcat
+                    ssh morveus@vps-ionosmorve.us
                 case nas
                     echo "Connecting to unRAID" | mlolcat
                     ssh -t morveus@morve.us ssh -t morveus@rack1.morve.us ssh root@192.168.1.10
@@ -30,7 +33,7 @@ function morveus
 		    echo "Connecting to Mereau Offsite Backup" | mlolcat
 		    ssh root@mereau.backup.morveus.com
                 case '*'
-                    echo "Invalid connection. Try 'home', 'vps' or 'nas'."
+                    echo "Invalid connection. Try 'home', 'vps', 'vps-ionos', or 'nas'."
             end
 
         case kubernetes
