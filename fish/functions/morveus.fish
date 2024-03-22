@@ -32,6 +32,9 @@ function morveus
                 case mereau-backup
 		    echo "Connecting to Mereau Offsite Backup" | mlolcat
 		    ssh root@mereau.backup.morveus.com
+                case gate
+		    echo "Connecting to Gate controller" | mlolcat
+		    ssh -t morveus@morve.us ssh -t morveus@gate.morve.us
                 case '*'
                     echo "Invalid connection. Try 'home', 'vps', 'vps-ionos', or 'nas'."
             end
@@ -71,6 +74,7 @@ function morveus
 	    echo "          ai: Connects to AI machine" | mlolcat
 	    echo "          vps: Connects to morve.us" | mlolcat
 	    echo "          nas: Connects to unRAID" | mlolcat
+	    echo "          gate: Connects to Gate controller" | mlolcat
 	    echo "          mereau-backup: Connects to Mereau Offsite Backup (Internal Network)" | mlolcat
 	    echo "          streamer: Connects to the Volumio streamer" | mlolcat
 	    echo;
