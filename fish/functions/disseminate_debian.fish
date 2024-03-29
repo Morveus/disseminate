@@ -11,4 +11,8 @@ function disseminate_debian
         cargo install dusage 
    end   
 
+   if not type -q rngd
+        sudo apt install rng-tools5 -y
+   end
+
 end
