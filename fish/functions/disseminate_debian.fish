@@ -15,4 +15,8 @@ function disseminate_debian
         sudo apt install rng-tools5 -y
    end
 
+   if not type -q ntpdate
+        sudo apt install ntpdate -y
+   end
+
 end
