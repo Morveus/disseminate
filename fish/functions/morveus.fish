@@ -65,6 +65,12 @@ function morveus
 		   echo; echo "Session is now '$argv[3]'." | mlolcat
              end
 
+        case archive
+             echo "Archiving $argv[2]..." | mlolcat
+             tar -cvzf "$argv[2].tar.gz" "$argv[2]"
+             echo "Deleting source folder..." | mlolcat
+             rm "$argv[2]" -fR
+
 	case help
 	    echo "Morveus Helper ~~ https://morve.us/dis" | mlolcat
 	    echo "Usage:" | mlolcat
