@@ -1,3 +1,7 @@
+apt update
+apt install python -y
+pip install lolcat pyfiglet
+
 git clone https://github.com/Morveus/disseminate $HOME/.config/fish/disseminate
 
 cp $HOME/.config/fish/disseminate/fish/config.fish $HOME/.config/fish/
