@@ -354,3 +354,7 @@ end
 
 alias fish-greeting 'rainbow-spark;display-machinename;rainbow-spark'
 alias fish_greeting 'fish-greeting'
+
+function sudo!!
+    eval "sudo " (history | head -n1)
+end
