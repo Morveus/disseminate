@@ -14,6 +14,15 @@ function morveus
                 case home
                     echo "Connecting to rack1" | mlolcat
                     ssh -t morveus@morve.us ssh morveus@rack1.morve.us
+                case plane1
+                    echo "Connecting to Cluster Control Plane 1" | mlolcat
+                    ssh -t morveus@morve.us ssh morveus@plane1.morve.us
+                case plane2
+                    echo "Connecting to Cluster Control Plane 2" | mlolcat
+                    ssh -t morveus@morve.us ssh morveus@plane2.morve.us
+                case plane3
+                    echo "Connecting to Cluster Control Plane 3" | mlolcat
+                    ssh -t morveus@morve.us ssh morveus@plane3.morve.us
                 case vps
                     echo "Connecting to morve.us" | mlolcat
                     ssh morveus@morve.us
