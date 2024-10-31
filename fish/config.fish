@@ -358,3 +358,23 @@ alias fish_greeting 'fish-greeting'
 function sudo!!
     eval "sudo " (history | head -n1)
 end
+
+### Aliases
+alias n=node
+alias n="npm"
+alias n r="npm run dev"
+alias n b="npm run build"
+alias n i="npm install"
+alias n a="npm audit"
+
+alias g="git"
+alias g com="git commit -m"
+alias g p="git pull"
+alias g ps="git push"
+alias g b="git branch"
+alias g s="git status"
+alias g a="git add ."
+alias g c="git checkout"
+alias g m="git merge"
+alias g r="git rebase"
+### End aliases
