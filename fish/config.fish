@@ -362,10 +362,10 @@ end
 ### Aliases
 alias n=node
 alias n="npm"
-alias n r="npm run dev"
-alias n b="npm run build"
-alias n i="npm install"
-alias n a="npm audit"
+alias nr="npm run dev"
+alias nb="npm run build"
+alias ni="npm install"
+alias na="npm audit"
 
 alias g="git"
 alias gcom="git commit -m"
@@ -377,4 +377,10 @@ alias ga="git add ."
 alias gc="git checkout"
 alias gm="git merge"
 alias gr="git rebase"
+
+function gcap
+    git commit -am "$argv"
+    git push
+end
+
 ### End aliases
