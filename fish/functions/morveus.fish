@@ -7,6 +7,8 @@ function morveus
     pyfiglet "Morveus v$diss_version" | mlolcat
 
     switch $argv[1]
+        case k9s
+	    ssh -J morveus@morve.us,morveus@lb.morve.us morveus@plane1.morve.us -t "fish -i -c 'k9s'"
 	case update
 	    disseminate update
         case connect
