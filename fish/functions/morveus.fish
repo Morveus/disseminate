@@ -15,7 +15,7 @@ function morveus
             switch $argv[2]
 		case lb
 		    echo "Connecting to load balancer" | mlolcat
-		    ssh -t morveus@lb.morve.us
+		    ssh -J morveus@morve.us morveus@lb.morve.us
                 case home
                     echo "Connecting to rack1" | mlolcat
 		    ssh -J morveus@morve.us,morveus@lb.morve.us morveus@rack1.morve.us
