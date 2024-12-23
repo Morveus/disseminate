@@ -11,18 +11,21 @@ function morveus
 	    disseminate update
         case connect
             switch $argv[2]
+		case lb
+		    echo "Connecting to load balancer" | mlolcat
+		    ssh -t morveus@lb.morve.us
                 case home
                     echo "Connecting to rack1" | mlolcat
-                    ssh -t morveus@morve.us ssh morveus@rack1.morve.us
+		    ssh -J morveus@morve.us,morveus@lb.morve.us morveus@rack1.morve.us
                 case plane1
                     echo "Connecting to Cluster Control Plane 1" | mlolcat
-                    ssh morveus@plane1.morve.us
+		    ssh -J morveus@morve.us,morveus@lb.morve.us morveus@plane1.morve.us
                 case plane2
                     echo "Connecting to Cluster Control Plane 2" | mlolcat
-                    ssh morveus@plane2.morve.us
+		    ssh -J morveus@morve.us,morveus@lb.morve.us morveus@plane2.morve.us
                 case plane3
                     echo "Connecting to Cluster Control Plane 3" | mlolcat
-                    ssh morveus@plane3.morve.us
+		    ssh -J morveus@morve.us,morveus@lb.morve.us morveus@plane3.morve.us
                 case vps
                     echo "Connecting to morve.us" | mlolcat
                     ssh morveus@morve.us
@@ -31,10 +34,10 @@ function morveus
                     ssh morveus@vps-ionos.morve.us
                 case nas
                     echo "Connecting to unRAID" | mlolcat
-                    ssh -t morveus@morve.us ssh -t morveus@rack1.morve.us ssh root@192.168.1.10
+		    ssh -J morveus@morve.us,morveus@lb.morve.us root@192.168.1.10
                 case ai
                     echo "Connecting to the AI rack machine" | mlolcat
-                    ssh -t morveus@morve.us ssh -t morveus@rack2.morve.us 
+		    ssh -J morveus@morve.us,morveus@lb.morve.us morveus@rack2.morve.us
                 case streamer
                     echo "Connecting to the Volumio streamer" | mlolcat
                     sshpass -p 'volumio' ssh volumio@streamer.morve.us -o StrictHostKeyChecking=no
@@ -43,7 +46,7 @@ function morveus
 		    ssh root@mereau.backup.morveus.com
                 case gate
 		    echo "Connecting to Gate controller" | mlolcat
-		    ssh -t morveus@morve.us ssh -t morveus@gate.morve.us
+		    ssh -J morveus@morve.us,morveus@lb.morve.us morveus@gate.morve.us
                 case '*'
                     echo "Invalid connection. Try 'home', 'vps', 'vps-ionos', or 'nas'."
             end
