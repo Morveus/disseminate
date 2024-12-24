@@ -8,26 +8,26 @@ function morveus
 
     switch $argv[1]
         case k9s
-	    ssh -J morveus@morve.us,morveus@lb.morve.us morveus@plane1.morve.us -t "fish -i -c 'k9s'"
+	    ssh morveus@morve.us -t ssh morveus@lb.morve.us -t ssh morveus@plane1.morve.us -t fish -i -c 'k9s'
 	case update
 	    disseminate update
         case connect
             switch $argv[2]
 		case lb
 		    echo "Connecting to load balancer" | mlolcat
-		    ssh -J morveus@morve.us morveus@lb.morve.us
+		    ssh morveus@morve.us -t ssh morveus@lb.morve.us
                 case home
-                    echo "Connecting to rack1" | mlolcat
-		    ssh -J morveus@morve.us,morveus@lb.morve.us morveus@rack1.morve.us
+                    echo "Connecting to workspace" | mlolcat
+		    ssh morveus@morve.us -t ssh morveus@lb.morve.us -t ssh morveus@10.10.99.99
                 case plane1
                     echo "Connecting to Cluster Control Plane 1" | mlolcat
-		    ssh -J morveus@morve.us,morveus@lb.morve.us morveus@plane1.morve.us
+		    ssh morveus@morve.us -t ssh morveus@lb.morve.us -t ssh morveus@plane1.morve.us
                 case plane2
                     echo "Connecting to Cluster Control Plane 2" | mlolcat
-		    ssh -J morveus@morve.us,morveus@lb.morve.us morveus@plane2.morve.us
+		    ssh morveus@morve.us -t ssh morveus@lb.morve.us -t ssh morveus@plane2.morve.us
                 case plane3
                     echo "Connecting to Cluster Control Plane 3" | mlolcat
-		    ssh -J morveus@morve.us,morveus@lb.morve.us morveus@plane3.morve.us
+		    ssh morveus@morve.us -t ssh morveus@lb.morve.us -t ssh morveus@plane3.morve.us
                 case vps
                     echo "Connecting to morve.us" | mlolcat
                     ssh morveus@morve.us
@@ -36,10 +36,10 @@ function morveus
                     ssh morveus@vps-ionos.morve.us
                 case nas
                     echo "Connecting to unRAID" | mlolcat
-		    ssh -J morveus@morve.us,morveus@lb.morve.us root@192.168.1.10
+		    ssh morveus@morve.us -t ssh morveus@lb.morve.us -t ssh root@192.168.1.10
                 case ai
                     echo "Connecting to the AI rack machine" | mlolcat
-		    ssh -J morveus@morve.us,morveus@lb.morve.us morveus@rack2.morve.us
+		    ssh morveus@morve.us -t ssh morveus@lb.morve.us -t ssh morveus@rack2.morve.us
                 case streamer
                     echo "Connecting to the Volumio streamer" | mlolcat
                     sshpass -p 'volumio' ssh volumio@streamer.morve.us -o StrictHostKeyChecking=no
@@ -48,7 +48,7 @@ function morveus
 		    ssh root@mereau.backup.morveus.com
                 case gate
 		    echo "Connecting to Gate controller" | mlolcat
-		    ssh -J morveus@morve.us,morveus@lb.morve.us morveus@gate.morve.us
+		    ssh morveus@morve.us -t ssh morveus@lb.morve.us -t ssh morveus@gate.morve.us
                 case '*'
                     echo "Invalid connection. Try 'home', 'vps', 'vps-ionos', or 'nas'."
             end
